@@ -1,0 +1,14 @@
+<div>
+  <p>{{post?.title}}</p>
+  <p>{{post?.body}}</p>
+
+
+  <label>Comentários</label>
+  <ul>    
+    <li *ngFor="let comment of comments">
+        <p>EMAIL: {{comment.email}}</p>
+        <p>BODY: {{comment.body}}</p>
+    </li>
+  </ul>
+
+</div>
