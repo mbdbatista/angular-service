@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 const routes: Routes = [
   {
     path: 'post',
-    loadChildren: () => import('../app/post/post.module').then(e => e.PostModule)
+    loadChildren: () => import('../app/modules/post/post.module').then(e => e.PostModule)
   }
 ];
 
