@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartDataset, ChartOptions, ChartType, LegendItem, Plugin } from 'chart.js';
+import { PostListComponent } from './modules/post/post-list/post-list.component';
+import { ButtonComponent } from './modules/shared/components/button/button.component';
+import { ModalService } from './service/modal/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,9 @@ import { ChartDataset, ChartOptions, ChartType, LegendItem, Plugin } from 'chart
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalService: ModalService) { 
+    this.openModalFirst()
+  }
 
   public chartType: ChartType = 'bar';
 
@@ -65,4 +70,30 @@ export class AppComponent {
     }
   };
   public lineChartLegend = true;
+
+
+  receiveCloseEvent(option: Boolean) {
+    console.log(option)
+  }
+
+  openModalFirst() {
+    const ref = this.modalService.open(ButtonComponent)
+    ref.subscribe(event => {
+      if (event == 'CLOSE' || event == 'CANCEL') this.modalService.close()
+      else 
+        console.log('Sucesso!')
+        this.modalService.close()
+        this.openModalLast()
+    })
+  }
+
+  openModalLast(){
+    const ref = this.modalService.open(PostListComponent)
+    ref.subscribe(event => {
+      if (event == 'CLOSE' || event == 'CANCEL') this.modalService.close()
+      else 
+        console.log('Sucesso!')
+        this.modalService.close()
+    })
+  }
 }

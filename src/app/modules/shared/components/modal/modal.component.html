@@ -1,0 +1,14 @@
+<div class="modal">
+  <div class="modal__container">
+    <div class="modal__header">
+    </div>
+    <div class="modal__body">
+      <ng-template #modalBody></ng-template>
+    </div>
+    <div class="modal__footer">
+      <button class="modal__button modal__button--secondary" (click)="toggle(cancel)">Cancelar</button>
+      <button class="modal__button modal__button--primary" (click)="toggle(confirm)">Confirmar</button>
+    </div>
+    <span class="modal__close" (click)="toggle(close)">x</span>
+  </div>
+</div>
